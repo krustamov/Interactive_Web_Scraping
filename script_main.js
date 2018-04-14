@@ -64,6 +64,53 @@ function onchange() {
     createTables();
 }
 
+//from here
+
+let tableUFO1 = d3.select('#ufo-list');
+let multipleDate = d3.select("#dateInput1");
+let UFOInput2 = d3.select("#ufo-city");
+let UFOInput3 = d3.select("#ufo-state");
+let UFOInput4 = d3.select("#ufo-country");
+let UFOInput5 = d3.select("#ufo-shape");
+
+function handleSubmitClick2() {
+    let selectValue = d3.select('#dateInput1')
+        .property('value');
+    let selectValue2 = d3.select('#ufo-city')
+        .property('value');
+    let selectValue3 = d3.select('#ufo-state')
+        .property('value');
+    let selectValue4 = d3.select('#ufo-country')
+        .property('value');
+    let selectValue5 = d3.select('#ufo-shape')
+        .property('value');
+    // console.log(selectValue2);
+    parameters.filtered_data = [];
+    for (let row of ufoData) {
+        if (selectValue === row.datetime || selectValue2 === row.city || selectValue3 === row.state || selectValue4 === row.country || selectValue5 === row.shape)
+        {
+            parameters.filtered_data.push(row);
+        }
+    }
+    // console.log(parameters.filtered_data);
+    createTables();
+}
+
+
+let submitBtn2 = document.querySelector('#search-ufo2');
+
+submitBtn2.addEventListener('click', handleSubmitClick2);
+
+function onchange() {
+    // clean filtered data
+    parameters.filtered_data = [];
+
+    createTables();
+}
+
+//to here
+
+
 function init(ufoData) {
     console.log(ufoData);
     parameters.data = ufoData;
@@ -108,39 +155,3 @@ function createTables() {
 
 }
 
-//from here
-
-// let tableUFOMulti = d3.select('#ufo-list');
-// let multipleDate = d3.select("#dateInput1");
-// // // // let UFOInput2 = d3.select("#ufo-city");
-// // // // let UFOInput3 = d3.select("#ufo-state");
-// // // // let UFOInput4 = d3.select("#ufo-country");
-// // // // let UFOInput5 = d3.select("#ufo-shape");
-
-// function handleSubmitClick() {
-//     let selectValue = d3.select('#dateInput1')
-//         .property('value');
-//     // console.log(selectValue);
-//     parameters.filtered_data = [];
-//     for (let row of ufoData) {
-//         if (selectValue === row.datetime) {
-//             parameters.filtered_data.push(row);
-//         }
-//     }
-//     // console.log(parameters.filtered_data);
-//     createTables();
-// }
-
-
-// let submitBtn2 = document.querySelector('#search-ufo2');
-
-// submitBtn2.addEventListener('click', handleSubmitClick);
-
-// function onchange() {
-//     // clean filtered data
-//     parameters.filtered_data = [];
-
-//     createTables();
-// }
-
-//to here
