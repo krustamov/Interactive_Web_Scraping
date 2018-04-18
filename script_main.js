@@ -64,7 +64,9 @@ function onchange() {
     createTables();
 }
 
-//from here
+
+
+// //from here
 
 let tableUFO1 = d3.select('#ufo-list');
 let multipleDate = d3.select("#dateInput1");
@@ -87,7 +89,9 @@ function handleSubmitClick2() {
     // console.log(selectValue2);
     parameters.filtered_data = [];
     for (let row of ufoData) {
-        if (selectValue === row.datetime || selectValue2 === row.city || selectValue3 === row.state || selectValue4 === row.country || selectValue5 === row.shape)
+        // console.log(selectValue);
+        // console.log(selectValue2);
+        if ((!selectValue || selectValue === row.datetime) && (!selectValue2 || selectValue2 === row.city) && (!selectValue3 || selectValue3 === row.state) && (!selectValue4 || selectValue4 === row.country) && (!selectValue5 || selectValue5 === row.shape))
         {
             parameters.filtered_data.push(row);
         }
@@ -107,8 +111,6 @@ function onchange() {
 
     createTables();
 }
-
-//to here
 
 
 function init(ufoData) {
